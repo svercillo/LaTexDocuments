@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+
+\newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
+
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+\begin{document}
+% ========== Edit your name here
+\author{Stefan Verciilo, 20785644}
+\title {ECE 108: Assignment 4: Due by 11:59pm Saturday, July 27}
+\maketitle
+
+\medskip
+
+% ========== Begin answering questions here
+
+\begin{enumerate}
+
+
+\newline 
+
+1. 
+There are 10 letters in  the word "bookkeeper", and to find all the number of combinations, we must take into consideration all of the duplicate numbers. This means that we cannot just take 10 factorial.There are two instances of the letter 'o', three instances of the letter 'e', and two instances of the letter 'k'. We can find all the possible times that these letters will replace themselves and we have the same solution. for example, if we call one of the letter o's, o1 and o2, we have bo1o2kkeeper and bo2o1kkeeper which are the same combination of letters as order of the o's does not matter in this instance. We have the total number of possibilities is given by (10! / 2! /2! / 3!).
+This leaves with a final answer of: 151200.
+\newpage 
+2.
+\newline
+We know according to claim 33 in the textbook, we know that the cardinality of the power set of an arbitrary set A is given by the sum as i goes from 0 to n of the combination  n C i where n is the number of elements in the set A. Sum can be rewritten as the sum of the power sets of size i, as i goes from 0 to n. When n is equal to 5, the combination n C 5 is equivalent to the number of subsets of A with 5 elements. We are given that this value must be greater than 100 but we are trying to find the smallest value for n for which this occurs. We know that 8 C 5 = 56 $\<$ 100 and 9 C 5 = 126 $\<$ 100 therefore the smallest value of n is 9. This implies that the smallest value of the cardinality of A is also 9.
+\newpage 
+3. 
+\newline
+a)    
+For this question, we have four different types of dresses, black, white, red and blue (my favourite). However it is important to note that there are three colours of dresses for which there are 3 dresses, and one colour (blue) where there is only one dress. There are 4! ways to arrange four different as each grouping of dresses can be view as one unique element temporarily, and for 3 dresses there are 3! different ways to arrange 3. If dresses of the same colour are adjacent, then for there colours where there are 3 different dresses, we must take this into consideration. We can find the number of possible ways to arrange our closet under the given conditions by multiplying 4! which is the number of possible ways to arrange the different colours by the the number of possible ways to rearrange the dresses of the same colour, for all of the colours of dresses. This leads us to the following solution: 
+\begin{equation}
+    4! \cdot 3! \cdot 3! \cdot 3! \cdot 1! = 5184
+\end{equation}
+\newline 
+b) 
+For this question, we know that the blue dresses must be on the end and there are two different ways to put them on the edge, so we can omit and then multiply our answer by two. Because of the given order, as we place one dress down, we are left with one less one to choose form hence we are left with the following equation: 
+\begin{equation}
+    3 \cdot 3  \cdot 3  \cdot 2  \cdot 2  \cdot 2  \cdot 1  \cdot  1  \cdot 1  \cdot 2 = 432
+\end{equation}
+
+\newpage
+4. 
+\newline
+a) For this question, we can assume that the domain of n-bit strings can has a domain of 2$^n$. This is because we have two numbers (1, 0) to choose for one spot, n times. Hence we have 2 C 1 n times or (2 C 1)$^n$. So the cardinality of our domain can be denoted by 2$^n$ and the cardinality of the codomain is given by 2$^m$. Next, we can look at the number of possible mappings for one element of the codomain of f. Each point can be mapped to 2$^m$ different elements of the codomain of f, and since there are 2$^n$ elements in the domain of f, the number of possible functions we have is 2$^m$, 2$^n$ times, or just (2$^m$)$^{2^n}$
+\newline
+b) For this question, we want to see how many functions we can possibly create that are injective. When we are injectively mapping our domain to our codomain, we must take into consideration all of the ordered possibilities. For example if domain = A = \{a,b\} and codomain = B = \{1,2,3\}, the function which maps  a to 1, and b to 2, is different then the function which maps a to 2 and b to 1, even though both 1 and 2 are mapped to by some elements of A. In addition, when counting the number of injective function s , we must not use the same element of the codomain twice. Such that for our example above, a never maps to 1 and 2, via the definition of a function. In addition, we must make sure that each element of the codomain of f is mapped to at most one element of A. If we consider the case of permutation of the cardinality of A vs the cardinality of B then we account for all of these cases, hence the answer to this question is 2$^n$ P  2$^m$ which is equal to the following:
+
+\begin{equation}
+    \frac{(2^n)!}{(2^n - 2^m)!}
+\end{equation}
+\newline 
+c) We know that a surjective function is a function where every single element of the codomain is mapped to at least one element of the domain of f. This is fairly difficult to find so instead we can find all of the functions that are not surjective and subtract that from the total number of functions.
+To begin we know that there are (2$^m$)$^{2^n}$ possible unique functions as discovered in question 4 part 'a'. 
+We can remove the number of functions which leave at least one element of the codomain out. However it is very important to note that in removing those functions, we have removed all the functions have two elements of the codomain not mapped twice, and all the functions with 3 elements of the codomain are left out three times etc. However we can add all the functions which leave out two elements back into our total number, but in this case all the functions with three elements from the codomain unmapped are added twice. Hence from this pattern we can deduce the following alternating series.
+\begin{equation}
+    2
+\end{equation}
+\begin{equation}
+2^{m^2^n} + 
+\sum_{i=1}^{2^m} (-1)^i \\\  \\\ 2^mC i \\\ \\\ (2^m -i)^{2^n}
+\end{equation}
+\newline 
+d) In order to have a bijection, our function must also be injective, however this is under the constraint that the cardinality of the domain of the function must be equal to the cardinality of the codomain of the function. Hence because both of our functions are defined by 2$^k$ where k is the number of n-bit strings in the set, n must be equal to m. We already have derived the number of injective functions previously in question 4 part 'a', hence we can use this formula also to find the number of bijections, as bijections must be injections, under the constraint that n must be equal to m. Therefore we are left with the following: 
+\begin{equation}
+        \frac{(2^n)!}{(2^n - 2^m)!} =     \frac{(2^n)!}{0!} =   2^n!
+\end{equation}
+
+\newline 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.\newline 
+Let us define the set of the codomain of the function f as M. M contains m elements, starting from 0 and increases to m-1. 
+Let the set A represent the event where f(i$_1$) = f(i$_2$). Let there be a set Bk represent the set where the element i$_1$ = k, where k is an element of the set M, such that if k=0, B$_k$ is the event that i1 is equal to 0, if k=1 B$_k$ is the event that i1 = 1 and so forth. It is given in the question that there is uniform probability that an element i maps to a specific element of M, the m$^{th}$ slot. Therefore, as the cardinality of M is defined as m, there is a 1/m probability that event Bk occurs, hence Pr \{B$_{k}$\} = $\frac{1}{m}$. We can find the probability for example that the probability of  event A occurring given that event B$_0$ has occurred is also given by  $\frac{1}{m}$, as there are still m elements in m, and due to the uniform probability that an element i1 is mapped to a specific slot in M. Hence, \space \space \space Pr(A$\mid$B) = $\frac{1}{m}$. We still need to find A however. We do know, however that there are m sets of Bk given that there are m elements in M. We can therefore represent the probability of A occurring as denoted bellow: 
+\begin{equation}
+    Pr \{A\} = Pr\{A\cap (B_0 \cup B_1 \cup B_2 ......B_{m-1})\}
+\end{equation}
+Using boolean algebra we can expand...
+\begin{equation}
+    Pr\{A\} = Pr\{A\cap B_0\} + Pr\{A \cap B_1\}  + Pr\{A \cap B_2\} + .... +  Pr\{A \cap B_{m-1}\}
+\end{equation}
+But, again, because of uniform distribution we know that all of these probabilities are the same, and this occurs m times. We can also find the probability of sets A and B$_{k}$ for all k in our range. This value follows the substitution:
+
+\begin{equation}
+    Pr\{A \cap B_k\} = Pr\{B\} Pr\{A \mid B\}
+\end{equation}
+Therefore the value of the probability of a A intersect B$_{k}$ is just $\frac{1}{m}$. As this occurs m times, (k goes from 0 to m-1) then we can just multiply this value by m to get our answer: 
+\begin{equation}
+    Pr\{A\} = \frac{m}{m^2} = \frac{1}{m}
+\end{equation}
+b)
+We can prove this via contradiction and the pigeon hole principle. For example, if we know that our domain has a cardinality that is one greater than that of the cardinality of the codomain of a function, then we know that there must be at lest one element of the domain that is mapped to the same element in the codomain.  In our example, since we know that our function maps from U to some set M with cardinality m, and that we are given that f must map U to a specific slot with uniform probability, we know that if we seek to store n elements from U into a table of m slots, if the cardinality of U is greater than n multiplied by m, then we have an excess of elements of the domain, such that there are n elements left over where there are not enough slots to be mapped. Via definition of a function we know that all the elements of the domain must be mapped to some element of the codomain, hence there will be at least n elemets which map to the same slot. 
+
+\newapge 
+\vspace{400pt}6.
+In order to solve this question we can consider Pr\{A \} where Pr\{A \} represents the probability that if I pick 60 cards from a deck of 100 unique and ordered cards which are shuffled, all of the cards which I pick will be in ascending order. We can find the space set, which is the set of possible cases where our set of 60 cards will be ascending in order. The space set for this problem is the set of any 60 cards, where order does not matter and we can only use each card once. This can be represent by a combination, 
+60 C 100. To find the number of events where the 60 cards are ordered increasingly, we know that order does matter, and we cannot replace each card. Therefore this set of events can be represented by the permutation: 60 P 100. We know that Pr\{ A \} is equal to the set of events where the 60 cards are ordered, divided by the space set. This is given by : 
+\begin{equation}
+    (100!/(60! 40!)) / (100!/ 40!) = 1/ 60!
+\end{equation}
+\newapge 
+7.
+\newline
+As there is no explicit method stated in the question guiding a solution, we can simply use logical deduction to solve this problem. For this question, let the number of cars which have an AC unit be represented by the letter 'A', the number of cars which have immobilizers be represented by the letter 'I' and the number of cars which have fuel-injections be represented by the letter 'F'. We are given that 6 cars have all three elements, therefore there are 30 -6  = 24 cars which have 0, 1,  or 2 elements. However we already know that the number of cars with at most two elements and an AC component is given by 8-6 =2, the number of cars with at most two elements and immobilizers is given by 20-6 =14 and the number of cars with at most two elements and a fuel-injection component is 25 -6 =19. This implies that the total number of cars with at most two components is the 14 + 19 + 2 = 35. However we know that there are 20 cars with at least two - 6 cars with three = 14 cars with two components. This implies that the number of total components left over is given by 35 - 2 (14) = 7. This means there is 7 cars with only one feature. We know that of all the cars, 6 have 3 components and 14 have 2 components so there are 10 cars which have at least 1 component. We know there are 7 cars which have at least one component so there are 3 cars which do not have any components. From this it can be implied that there are 30 -3 = 27  cars which contain at least one component. 
+
+
+
+\end{enumerate}
+\end{document}
+\grid
+\grid
+
+    % \cup \mbox{\Large$\chi$} = \{ \forall X \in \mbox{\Large$\chi$}, x \in \mbox{\Large$\chi$} \} 
+    % \iff \{x \in X_{1} \bigwedge x \in X_{2} \bigwedge ......... \bigwedge x \in X_{n} \}
