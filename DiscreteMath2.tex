@@ -1,0 +1,349 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+
+\newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
+
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+\begin{document}
+% ========== Edit your name here
+\author{Stefan Verciilo, 20785644}
+\title{Math 108: Assignment 2: Due by 11:59pm Friday, June 7}
+\maketitle
+
+\medskip
+
+% ========== Begin answering questions here
+
+\begin{enumerate}
+
+
+\item 
+
+Let the intersection of superset chi  be represented by \cap \mbox{\Large$\chi$} 
+
+% ========== Just examp\newline 
+We know from the definition of intersection that it can be mathematically represented as:
+
+
+ \cap \mbox{\Large$\chi$} = \{x \in X \mid \forall X' \in \mbox{\Large$\chi$}, x \in X'\}
+
+
+However as suggested by the question,this equation can be rewritten explicitly stating the given condition: 
+\begin{equation}
+    \newline  \cap \mbox{\Large$\chi$} = \{x  \in X \cap X \in \mbox{\Large$\chi$} \mid \forall X' \in \mbox{\Large$\chi$}, x \in X'\}\\
+\end{equation}
+Instead of declaring x as an element of the arbitrary set of the power set chi, we can restate the definition intersection by changing the location condition to x being an element of the subset of "U", the universe set. The property condition does not change as we are keeping the same property of intersection, simply changing the location. This is seen below as: 
+\begin{equation}
+    \cap \mbox{\Large$\chi$} = \{x  \in  U \mid \forall X' \in \mbox{\Large$\chi$}, x \in X'\}\\
+\end{equation}
+
+b)
+\newline  In order to determine the the intersection of chi when chi is equal to the empty set, we must consider what the set evaluates to given the definition we determined in part a) of this question. The definition of intersection in terms of U instead of an arbitrary set X is given by: 
+\begin{equation}
+        \cap \mbox{\Large$\chi$} = \ \{\left(x  \in  U \right) \bigwedge \left( \forall X' \in \mbox{\Large$\chi$}, x \in X' \right)\}\\ 
+\end{equation}
+The property condition:
+\begin{equation}
+    \forall X' \in \mbox{\Large$\chi$}, x \in X'
+\end{equation}
+must always be true because the property condition is stated so that for any set X' which is an element of chi, then the element x must be in it. This is irrespective if there even is a single set in chi, because of the for any statement. No matter the location condition, this statement is always true. For the property condition; 
+\begin{equation}
+    x \in U 
+\end{equation}
+this statement is always true.
+The property condition is not dependent on the location condition. It does not matter what x is within it's 'range', if the property condition is satisfied, then x is therefore an element of chi. Because both statements are true, the entire statement: 
+\begin{equation}
+         \cap \mbox{\Large$\chi$} = \ \{\left(x  \in  U \right) \bigwedge \left( \forall X' \in \mbox{\Large$\chi$}, x \in X' \right)\}\\
+\end{equation}
+is also always true. Essentially this means that for every x in U, the intersection is satisfied, thus the intersection of chi when chi is the empty set will be the universal set. 
+
+This is given that the location of x is written in terms of U and not what it was originally was determined to be. If the location condition of the intersection of chi is what is originally determined in equation (1), then we have a different evaluation. The property condition is the same and thus is always true  before, however the location property is always false when chi is the empty set. The statement:
+\begin{equation}
+    x  \in X \cap X \in \mbox{\Large$\chi$} 
+\end{equation}
+can never be true, because no non-empty set X can ever be contained in chi, which is equivalent to the empty set. Thus, when chi is the non-empty set, the intersection of chi is also the empty set, which intuitively sounds like a more reasonable definition for intersection that the definition determined by in terms of U. 
+
+\newpage
+2. 
+
+According to the textbook, the definition of union is defined as: 
+\begin{equation}
+    \cup \mbox{\Large$\chi$} = \{y \in X \mid X \in \mbox{\Large$\chi$} \}
+\end{equation}
+
+This can be reinterpreted as: 
+\begin{equation}
+    x \in \cup \mbox{\Large$\chi$} \iff x \in \{ y \in X \mid X \in \mbox{\Large$\chi$} \}
+\end{equation}
+\begin{equation}
+    \iff (x \in X) \bigwedge  (X = X_{1} \lor  X = X_{2} \lor ......... lor X = X_{n} )
+\end{equation}
+\begin{equation}
+    \iff x \in X_{1} \lor x \in X_{2} \lor ......... x \in X_{n}
+\end{equation}
+\begin{equation}
+    \iff \{ x\in X_{1} \} \cup \{x \in X_{2} \} \cup ......... \cup \{ x \in X_{n} \} 
+\end{equation}
+\begin{equation}
+    \iff X_{1} \cup X_{2} \cup  ......... \cup X_{n}
+\end{equation}
+
+b) 
+\newline The definition of Union is defined in the textbook under the condition that chi cannot be the empty set as: 
+\begin{equation}
+    \{ x\in X \mid \forall X' \in \mbox{\Large$\chi$}, x \in X' \}
+\end{equation}
+According to the given question, the union of chi is with respect to chi being a power set which contains the sets X$_{1}$ to X$_{n}$ where n is an element of the natural numbers, thus this satisfies the given condition that chi cannot be the empty set, as n must be a whole number greater or equal to 1. 
+
+This can be interpreted as: 
+\begin{equation}
+    x \in \cap \mbox{\Large$\chi$} \iff x \in \{ y \in X, X \in \mbox{\Large$\chi$} \mid \forall X' \in \mbox{\Large$\chi$}, y \in X' \}
+\end{equation}
+\begin{equation}
+    \iff x \in X_{1} \land x \in X_{2}  \land ......... \land x \in X_{n}
+\end{equation}
+\begin{equation}
+    \iff \{ x \in X_{1} \} \cap  \{x \in X_{2} \} \cap  ......... \cap \{ x \in X_{n} \}
+\end{equation}
+\begin{equation}
+    \iff X_{1} \cap X_{2} \cap  ......... \cap X_{n}
+\end{equation}
+
+\newpage 3.
+\newline The following proposition called the absorption property:
+\begin{equation}
+    A \cap (A \cup B) = A 
+\end{equation}
+ can be reinterpreted in two propositions:
+\begin{equation}
+     A \cap ( A \cup B) \subseteq  A     
+\end{equation}
+And 
+\begin{equation}
+     A \subseteq A \cap ( A \cup B) 
+\end{equation}
+The definition of a subset is:
+\begin{equation}
+    A \subseteq \iff x \in A \implies x \in B
+\end{equation}
+Thus both directions of this proof can be proven using a double implication.
+\begin{equation}
+     x \in (A \cap(A\cup B) )\iff x \in A 
+\end{equation}
+\begin{equation}
+    x \in (x \in A \land x \in (A \cup B))\iff x \in A
+\end{equation}
+\begin{equation}
+    x \in \bigg( (x \in A) \land x \in \Big((x \in A) \lor (x \in B )\bigg)\iff x \in A
+\end{equation}
+\begin{equation}
+        x \in \bigg( \big( (x \in A) \land  (x \in A) \big) \lor  x \in \Big((x \in A) \land (x \in B )\bigg)\iff x \in A
+\end{equation}
+\begin{equation}
+    x \in \bigg( x \in A \lor x \in \Big( x \in A \land x \in B \Big) \bigg) \iff x \in A 
+\end{equation}
+
+ Let X' represent the intersection of A and B. 
+ 
+\begin{equation}
+        x \in \bigg( x \in A \lor  (x \in X' \subseteq A )  \bigg) \iff x \in A 
+\end{equation}
+ \begin{equation}
+        x \in A \lor  (x \in X' \subseteq A )  \iff x \in A 
+\end{equation}
+If x is an element of A, or x is an element of a subset of A, then x is an element of A. 
+\begin{equation}
+    x \in A \iff x \in A
+\end{equation}
+
+
+\newpage 4.
+
+In order to prove that chi is an element of the real numbers, we must prove that chi is a subset of R and that R is a subset of chi. For the given equation for chi, we can interpret an arbitrary set X$_{i}$ of \mbox{\Large$\chi$}. We will denote the subscript value by the value of a that is defined by the property of the set. For example: 
+
+\begin{equation}
+        X_{r} = [r, \infty) 
+\end{equation}
+\newline The backward implication can be seen by: 
+\begin{equation}
+    R \subseteq \cup \mbox{\Large$\chi$}
+\end{equation}
+\begin{equation}
+    \forall r \in R  \implies r \in \cup \mbox{\Large$\chi$} 
+\end{equation}
+Case 1:r $\leq$ 0. In this case, r is guaranteed to be in the set X$_{-1}$ which contains all numbers from [-1, $\infty$) 
+\begin{equation}
+    r \geq \implies r \in X_{-1} 
+\end{equation}
+\newline
+Case 2: 
+ r $<$ 0. For every value of r less than zero, the r value will always be present in the set X  with an a value equivalent to r, as the property [r, $\infty$ ) has an inclusive lower bounds.
+\begin{equation}
+    r < 0 \implies r \in X= [r, \infty) \implies r \in X_{r}
+\end{equation}
+In case one and two, r is an element of X$_{-1}$ and X$_{r}$ respectively. Both of these sets are guaranteed to be elements of chi because of the definition of chi, which implies that for every real "a" which is less then 0, there exists a set X$_{r}$. Hence the backward implication is proven.
+\newline \newline
+The forwards implication is seen by: 
+\begin{equation}
+    \cup \mbox{\Large$\chi$} \subseteq R
+\end{equation}
+\begin{equation}
+      r \in \cup \mbox{\Large$\chi$} \implies  \forall r \in R
+\end{equation}
+Case 1: r $\geq$ 0
+\begin{equation}
+    r \geq 0 \implies r \in  X_{-1} 
+\end{equation}
+Case 2: r $<$ 0 
+\begin{equation}
+    r < 0 \implies r\in X_{r}
+\end{equation}
+Both X$_{r}$ and X$_{-1}$ are elements of the set chi, because of the definition of chi in the given context of the question.We already know that the union of a power set is defined as:
+\begin{equation}
+    \cup \mbox{\Large$\chi$} = \{y \in X \mid X \in \mbox{\Large$\chi$} \}
+\end{equation}
+Because in both case one and two, r is an element of a set which is itself a set of chi, r is within the union of chi. Hence the forward and the backward implications have been proven.
+
+\newpage 
+5.
+\newline 
+Given two ordered pairs $\langle$ x$_{1}$, y$_{1}$ $\rangle$,  $\langle$ x$_{2}$, y$_{2}$ $\rangle$, we are given the proposition: 
+\begin{equation}
+    ((x_1 = x_2) \land (y_1 = y_2)) \implies \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle
+\end{equation}
+There are two notable cases in this situation: 
+\newline 
+\newline
+Case 1: Both of the elements in the one ordered pair are equal to both of the elements in the other ordered pair such that such that:  x$_{1}$ = x$_{2}$ = y$_{1}$ = y$_{2}$. This then implies the following
+
+\begin{equation}
+      (  \{ x_1 \} =  \{  x_2  \}) \land (  \{  y_1 \}   =  \{  y_1 \}  ))  \implies  \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle \rangle
+\end{equation}
+\begin{equation}
+      ( \{ \{ x_1 \} \} =  \{ \{ x_2 \} \}) \land (  \{ \{ y_1 \} \}=  \{ \{ y_2 \} \} ))  \implies  \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle
+\end{equation}
+\begin{equation}
+      ( \{ \{ x_1 \} \} =  \{ \{ x_2 \} \}) \land (  \{ \{ x_1 \} \}=  \{ \{ x_2 \} \} ))  \implies  \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle
+\end{equation}
+\begin{equation}
+    \langle x_1, y_1 \rangle =  \langle x_2, y_2 \rangle  \bigwedge    \langle x_1, y_1 \rangle =  \langle x_2, y_2 \rangle  \implies  \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle
+\end{equation}
+\begin{equation}
+     \langle x_1, y_1 \rangle =  \langle x_2, y_2 \rangle \implies  \langle x_1, y_1 \rangle =  \langle x_2, y_2 \rangle
+\end{equation}
+Thus for case one, we have proven that the proposition is always true.
+
+\newline 
+Case 2: In each ordered pair, x and y are unique values and cannot equal each other. This can be written as: 
+
+\begin{equation}
+         x_1 \neq y_1 \land x_2 \neq y_2 \mid  ( \{ x_1\} =  \{ x_2\}) \bigwedge (  \{x_1,  y_1  \}=  \{x_2,  y_2 \} ) \implies  \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle
+\end{equation}
+\begin{equation}
+      x_1 \neq y_1 \land x_2 \neq \ y_2 \mid \{ \; ( \{ x_1\} =  \{ x_2\}) \bigwedge ( \{ \{x_1,  y_1 \}  =  \{ \{x_2,  y_2 \} \} ) \;  \implies  \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle
+\end{equation}
+\begin{equation}
+      x_1 \neq y_1 \land x_2 \neq \ y_2 \mid \{ \; ( \{ x_1\} =  \{ x_2\}) \bigwedge ( \{ \{ x_{1} \},  \{x_1,  y_1  \} \}=  \{ \{x_2\}, \{x_2,  y_2 \} \} ) \; \implies  \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle
+\end{equation}
+\begin{equation}
+      x_1 \neq y_1 \land x_2 \neq \ y_2 \mid  \{ \{ x_{1} \},  \{x_1,  y_1  \} \}=  \{ \{x_2\}, \{x_2,  y_2 \} \}  \; \implies \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle
+\end{equation}
+\begin{equation}
+          x_1 \neq y_1 \land x_2 \neq \ y_2 \mid  \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle \implies \langle x_1, y_1 \rangle = \langle x_2, y_2 \rangle
+\end{equation}
+Thus for both case 1 and case 2, we have proven that the proposition is always true, hence the given proposition must always be true. 
+\newpage
+
+6.
+\newline
+The composite function of gf given the conditions in the question can be defined as: 
+\begin{equation}
+    gf: domain(f) \longmapsto codomain(g), \;\;\; gf: k \longmapsto \sqrt{k}\geq 0 
+\end{equation}
+\begin{equation} 
+    gf:  Z \rightarrow R,
+    \;\;\; gf: a  \longmapsto (\sqrt{a^{2}})\geq 0 
+\end{equation}
+This can be reinterpreted by replacing the term '($\sqrt{a}$$^{2}$)' with $\mid$a$\mid$, as the exponents cancel out and a will always be positive.
+\begin{equation}
+    gf:  Z \rightarrow R,
+    \;\;\; gf: a \longmapsto \; \; \;  \mid a \mid 
+\end{equation}
+
+In order to check if gf is a function that is invertible, we can check if the function is injective, as the two are equivalent statements. That is to say: 
+
+\begin{equation}
+    \forall \; a, b \in domain(gf) = domain(f), \; a \neq b \implies gf(a) \neq gf(b)
+\end{equation}
+This essentially states that for any arbitrary input of f, a, where a is an element of the domain of f and the domain of gf, a maps uniquely to a value of gf(a). That is to say there is no other element within the domain of gf or f which maps to same output of gf. Thus if there is one case where more than one value of a map to the same value of gf, then the claim that the composite function gf is invertible is disproved. We can see that: 
+\begin{equation}
+     \forall a \in (0, \infty) \ a \in Z  \implies gf(-a) = a = gf(a) 
+\end{equation}
+Therefore, for every negative integer value a, gf(a) will output the same value as 'b', which we can define as the positive value of the magnitude of a. Hence a $\neq$ b  and  gf(a) = gf(b) hence the property of injection and therefore invertibility are violated. Thus gf is not invertible. 
+
+\newpage
+7. 
+\newline a) 
+\newline 
+If there exists a composite function gf, if f,g are both injective then g(f(a)) is also injective. This can be rewritten as: 
+
+% \begin{equation}
+%     \bigg( f(a_{1}) = f(a_{2}) \implies a_{1} = a_{2} \bigwedge  g(b_{1}) = g(b_{2}) \implies b_{1} = b_{2} \bigg) \implies 
+%     \bigg( g(c_{1}) = g(c_{2}) \implies c_{1} = c_{2} \bigg)
+% \end{equation}
+\begin{equation}
+        \bigg( f(a_{1}) = f(a_{2}) \implies a_{1} = a_{2} \bigwedge  g(b_{1}) = g(b_{2}) \implies b_{1} = b_{2} \bigg) \implies 
+    \bigg( g(f(a_{1})) = g(f(a_{2})) \implies c_{1} = c_{2}) \bigg)
+\end{equation}
+From the right side of this equation, if we equate the variable b$_{1}$ to f(a$_{1}$) and b$_{2}$ to f(a$_{2}$)
+\begin{align*}\label{eq:pareto mle2}
+   \bigg( f(a_{1}) = f(a_{2}) \implies a_{1} = a_{2} \bigwedge  g(f(a_{1})) = g(f(a_{2})) \implies f(a_{1}) = f(a_{2}) \bigg) \\ \implies 
+\bigg( g(f(a_{1})) = g(f(a_{2})) \implies c_{1} = c_{2}) \bigg)
+\end{align*}
+Because f is injective, from the definition of injection we know that every value of the range of f must be mapped by at least one element of the domain of f. 
+\begin{align*}
+       \bigg(  g(f(a_{1})) = g(f(a_{2})) \implies f(a_{1}) = f(a_{2}) \implies a_{1} = a_{2} \bigg) \\ \implies \bigg( g(f(a_{1})) = g(f(a_{2})) \implies c_{1} = c_{2}) \bigg)
+\end{align*}
+The arbitrary c$_{1}$ and c$_{2}$ can be rewritten as the arbitrary values a$_{a}$ and b$_{2}$ and hence, if the functions f and g and injections, then the composite function fg will also be an injection.
+\newline \newline
+b)
+\newline 
+The converse of the statement from question 7a is assuming there exists a composite function g(f(a)): 
+\begin{equation}
+    gf is injective \implies f is injective and g is injective
+\end{equation}
+This can be disproved if for any gf, the first part of the implication is true, and the second part of the implication is false. In this case, if there exists a gf such that one of f or g is not injective then the claim is debunked. Given the functions g and f: 
+\begin{equation}
+f(a) = a^{2}, \;\;\;\;\; g(b) = b^{1/2} 
+\end{equation}
+gf is defined as: 
+\begin{equation}
+   c \in domain(gf), \;\;\;\;\;   gf = ((f(a))^{2})^{1/2} = (f(a))^{2} = c^{2}
+\end{equation}
+In order for f to injective. from the definition of injection, each element of the codomain of f must map to at most one element of the domain of f: 
+\begin{equation}
+    f(a_{1}) = f(c_{2}) \implies c_{1} = c_{2} 
+\end{equation}
+We can prove that f is not injective and thus disprove the converse of the claim of question 7a) if there exists a counter example in which the definition of injection does not hold for the function f. 
+\newline 
+If we let f(a$_{1}$) = f(a$_{2}$) = f = 4, we see that a$_{a]}$ can be 2 and a$_{2}$ can be -2. Hence the propsition: 
+\begin{equation}
+    f(a_{1}) = f(a_{2}) \implies a_{1} = a_{2}
+\end{equation}
+Is a false statement, therefore f is not injective for a case where gf is injective. Therefore the converse of the claim in question 7a) is false. 
+
+% Using construction, we can create a function which is injective given that f and g are injective. 
+\end{enumerate}
+\end{document}
+\grid
+\grid
+
+    % \cup \mbox{\Large$\chi$} = \{ \forall X \in \mbox{\Large$\chi$}, x \in \mbox{\Large$\chi$} \} 
+    % \iff \{x \in X_{1} \bigwedge x \in X_{2} \bigwedge ......... \bigwedge x \in X_{n} \}
