@@ -1,0 +1,303 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+
+\newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
+
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+\begin{document}
+% ========== Edit your name here
+\author{Stefan Verciilo, 20785644}
+\title {ECE 108: Assignment 3: Due by 11:59pm Wednesday, June 27}
+\maketitle
+
+\medskip
+
+% ========== Begin answering questions here
+
+\begin{enumerate}
+
+
+1. 
+\newline Let Q represent the set of rational numbers. Let N represent the set of all natural numbers. Let Z represent the set of all integers. 
+I will construct a function f which maps Z $\times$ N to N, which is an injection. Let B = N, let A = Z $\times$ N, let a $\in$ A, let b $\in$ B.
+
+\begin{equation}
+    f : a \mapsto     \left\{
+                \begin{array}{l0}
+                if \; \; a \leq b: 
+                \\ 
+                \;\;\;\; \;\;\;\;\; if a \; \leq 0: \\
+                
+               \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+               (b-1)^2 + 2 |a| +1
+               \\
+                \;\;\;\; \;\;\;\;\; 
+                else:  \\
+                      \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+                (b-1)^2 + 2 a
+                \\
+                else: \\
+                  \;\;\;\; \;\;\;\;\; if \; a \leq \; 0: \\ \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+                    (2 |a|)^2 + 2|a|+1 + b
+               \\
+                \;\;\;\; \;\;\;\;\; 
+                else:  \\
+                \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+                
+                (2a -1)^2 +2a +b             
+                \end{array}
+              \right.
+\end{equation}
+
+This simplifies to the following function: 
+\begin{equation}
+    f : a \mapsto     \left\{
+                \begin{array}{l0}
+                if \; \; a \leq b: 
+                \\ 
+                \;\;\;\; \;\;\;\;\; if a \; \leq 0: \\
+                
+               \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+               (b-1)^2 + 2 |a| +1
+               \\
+                \;\;\;\; \;\;\;\;\; 
+                else:  \\
+                      \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+                (b-1)^2 + 2 a
+                \\
+                else: \\
+                  \;\;\;\; \;\;\;\;\; if \; a \leq \; 0: \\ \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+                        4a^2 +2 |a| +b +1 
+               \\
+                \;\;\;\; \;\;\;\;\; 
+                else:  \\
+                \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+                4a^2 -2a +b +1 
+                \end{array}
+              \right.
+\end{equation}
+
+I can claim that this is an injective function, and this can be proved via any proof technique such as case analysis for example. However the purpose of this question to give the specification of an injective function from Q to N. This is an injection because it was formed using the combinations of claims 28 and 29 in the textbook. Because the injection from Z to N is included as one of the elements of the ordered pairs in f which I constructed in this. Because of this fact, and the fact that function N $\times$ N in claim 29 is injection, we know that constructed function f must be injective. 
+
+\newpage
+2. 
+
+
+For this question, we are given A$_1$, A$_2$, ... A$_n$ where each set A$_i$ where i is an arbitrary integer from 1 to n, are each finite and non-empty. The union of all of these sets gives A. For an arbitrary set C to be finite, this means that there exists a bijection between C and the set N$_n$ where N$_n$ = \{1, 2, ...,n\}. Because this is true, it is also known through claims discussed in course, that if there exists only an injection between C and N$_n$, then A$_i$ is finite.
+\newline First, we can prove that there exists a injection between A union B  and N$_q$, where q is a natural number. We can prove this through the construction of a function.
+\newline 
+Let f be a injective function:
+
+\begin{equation}
+    f: A \rightarrow N_n, \;\; where \;\; N_n = \{1,2, ...., n\}
+\end{equation}
+Let g be a injective function:
+\begin{equation}
+    g : B \rightarrow N_m \;\; where \;\; N_m = \{1,2,... , m\}
+\end{equation}
+Let h a function which I claim to be injective:
+\begin{equation}
+    h: A \cup B \rightarrow N_{n+m}
+\end{equation}
+
+Let c \in A \cup B 
+
+\begin{equation}
+    h : c \mapsto   
+    \left\{
+                \begin{array}{ll}
+                if \;\; c \in A \\
+                  \;\;\;\;\; 1 : f(c) = min\{f(c')\} \; \;  when \; \; c' \in A\\
+                   \;\;\;\;\; 
+                   h(c') + 1 \; \; where \;\;  c', c'' \in A \; \; \wedge \; \; h(c') = max  \{f(c")  \mid f(c") \in \{ 1, 2, ... , f(c) -1 \} \} \\
+                   
+                else \;\; if \;\;  h(c) = min\{ g(c')\} ,  \;\;\ h(c) = f(c") + 1, \;\; where \;\; f(c") = max\{f(c_3)\} \;\; \wedge \;\; c", c_3 \in A, \;\; c' \in B
+                
+                \\
+                \;\;\;\;\;\;\;\;
+                else \;\; h(c) = g(c') + max\{f(c_3)\} +1 
+                \;\; where \;\; c_3 \in A, \;\; 
+                \wedge \;  g(c') = max\{ g(c")\mid g(c") \in \{ 1, 2,..,g(c)-1 \}\}  
+                \\ 
+                \;\;\;\;\;\;\;\;
+                \;\;\;\;\;\;\;\; \wedge 
+                \; c', c" \in B
+    
+                % else \;\;  h(c) = g(c') + min( \;\; where \;\; h(c') = max\{ h(c") \mid h(c") \in \{ 1, 2, ... , h(c) -1 \} \} \;\; \wedge \;\; c', c" \in B             
+                \end{array}
+              \right.
+\end{equation}
+I claim that this function h which maps all the values of a $\in$ A  to its corresponding f(c) value, and all values of b $\in$ B to its corresponding g(b) value plus the max value of the set of f(c). For c $\in$ A $\cup$ B, the codomain will be N$_n+m$. This function is not necessarily surjective but it is injective. therefore there exists a bijection between two finite sets. Using injection and this fact we have just proven, we can prove the general case for the union of n finite sets where n is a natural number: 
+
+\begin{equation}
+    A = finite \; \wedge \; B = finite \implies  A \cup B finite
+\end{equation}
+We can prove that the union of any number of finite adn non-empty sets results in a finite set, and thus prove our case for some n. 
+Our base case this for two finite sets, the union is true. Assuming that for n sets, this is true, we must prove that for n+1 sets, the union of all the sets is finite. Let k $\in$ N.
+\begin{equation}
+A_1, A_2, ... , A_k  = finite\implies A_1 \cup A_2 \cup ... \cup A_k finite 
+\end{equation}
+Thus through induction and to support our assumption above, we must prove the k+1$^{th}$ case.
+
+\begin{equation}
+A_1, A_2, ... , A_k, A_{k+1}  = finite\implies A_1 \cup A_2 \cup ... \cup A_k \cup A_{k+1} = finite 
+\end{equation}
+We can rewrite the following and call set C the union of the sets A$_1$, A$_2$,..., A$_k$. Through our assumption, set C is finite. We are left with two finite sets C and A$_{k+1}$. Through the proof of the base case, we know that the union of this set must also be finite. Therefore since we know that for any n, the union of two finite non-empty sets is a finite set, then for our n, we know that this property holds.
+
+
+
+
+\newpage 3.
+\newlline
+
+We must prove the cardinality of set N$_n$ is less than set N where N is the set of all natural numbers. This can be done by proving that there exists an injective which maps from the N$_n$ to N, while there must not exists a surjective function between the two sets. 
+We can construct an injective function f:
+
+\begin{equation}
+    g: a \mapsto a 
+\end{equation}
+I claim that g is injective and we can prove this using any suitable truth method.
+For any arbitrary f which is an injection which maps N$_n$ to N, we can say that there exists a m $\in$ N which is equal to max\{domain(f)\} = max \{ N$_n$\}. We can say that in N, there exists an element q = m + 1. In this scenario, q is not an element of the set N$_n$, however it is an element of the set N. This implies: 
+\begin{equation}
+    range(f) < codomain(f) \implies \;  f \; isn't  \; surjective
+\end{equation}
+This directly implies that there does not exist a surjective for any injective function f which maps N$_n$ to N. In addition, we have proved that there does exist at least one injective function between the two sets which I have defined as f: a $\mapsto$ a. Thus the established definition of the less than operator as it pertains to the cardinality of two sets, we have proven that the property hold for this case. 
+
+
+
+\newpage 4.\newline
+The relation in the question is given by: 
+
+\begin{equation}
+    R = \{ \langle x, y \rangle \in A^2 \mid \exists i \in \{ 1, 2, ....,n \} \; s.t. \; x \in A_i \wedge y\in A_i\} 
+\end{equation}
+In order to prove equivalence, we must prove that R is reflexive, symmetric, and transitive.
+The definition of symmetric is:
+
+\begin{equation}
+    \forall \langle x, y \rangle \in A^2  \mid \langle x, y \rangle \in R \implies \langle y, x  \rangle \in R
+\end{equation}
+To prove this, we already know for an ordered pair x, y in A$^2$ the relation holds. Thus we already know that x is in A$_i$, and y is in A$_i$. Thus it is implicit that y is in A$_i$, and x is in A$_i$. This implies that given the relation, the ordered pair $\langle$ y, x $\rangle$ is also in R.
+
+\newlline
+To prove reflexion: 
+
+\begin{equation}
+    \forall x \in A, \langle x, x \rangle \in R
+\end{equation}
+In this case, we can assume that if  again an arbitrary ordered pair were to exits that satisfies the relation R, then x, y $\in$ A$_i$. If both elements of an ordered pair are equal, and we know the element to satisfy the relation, then if we set x =y, we know that the ordered pair $\langle$x, x$\rangle$  $\in$ A$^2$, thus we know that R is reflexive.
+
+\newlline To prove transitivity, we must prove the following:
+
+\begin{equation}
+    \forall \langle x,y,z\rangle \in A^3, \langle x, y\rangle \in R \wedge \langle y, z\rangle \in R \implies \langle x,z\rangle \in R 
+\end{equation}
+If there exists an ordered pair x an y, such that the relation holds, and if there exists another order pair y,z for which the relation holds, it is implied that x,y,z  $\in$ A$_i$. From this it is know that x, z  $\in$ A$_i$, which implies via our relation that x, z is an ordered pair in R. Thus equivalence is proven.
+
+
+
+
+\newpage 
+5. \newline The claim in this question is that a relation with a cardinality greater than one cannot be both a partial order and equivalence. In order for the relation to be both of these things, it must be symmetric, reflexive, transitive and antisymmetric. We can disprove this with a counter example that proves that there exists one case where a relation with cardinality greater than one that can be a partial order and equivalence. 
+\newlline In order for a relation to be transitive it must satisfy the definition below.: 
+
+\begin{equation}
+    \forall \langle x,y,z\rangle \in A^3, \langle x, y\rangle \in R \wedge \langle y, z\rangle \in R \implies \langle x,z\rangle \in R 
+\end{equation}
+
+\newline In order for a relation to be reflexive it must satisfy the definition below.: 
+\begin{equation}
+    \forall x \in A, \langle x, x \rangle \in R
+\end{equation}
+
+\newline In order for a relation to be symmetric it must satisfy the definition below.: 
+
+\begin{equation}
+    \forall \langle x, y \rangle \in A^2  \mid \langle x, y \rangle \in R \implies \langle y, x  \rangle \in R
+\end{equation}
+
+The definition of antisymmetric is: 
+\begin{equation}
+  \forall \langle x,y\rangle \in A^2,  \langle x,y\rangle \in R \wedge \langle y,x\rangle \in R \implies x = y
+\end{equation}
+Through construction, we can create the set A = \{a,b\}. and define a relation R as follows: 
+
+\begin{equation}
+    R = \{\langle x, y\rangle \in A^2 \mid x = y\}
+\end{equation}
+
+This relation is reflexive because in order an ordered pair to be in R, it each element of the ordered pair must be equal to each other. Thus for for all x in R, the ordered pair $\langle$x,x$\rangle$ exists, hence symmetry. \newline  
+
+The relation is symmetric because for every ordered pair x,y in the relation, x must be equal to y, and therefore via deductive logic, the ordered pair y,x must also be in the set R. \newline 
+
+The relation is transitive because three ordered pairs, x,y y,z, and x,z. If x,y is in the relation then y must be equal to x. In addition z must be equal to y which is known to be equal to x, thus again by deduction x must be equal to z. Therefore the ordered pair x,z must be in set R if the both the order pairs x,y and y,z are in R hence transitivity. \newline 
+
+The relation is antisymmetric because for all ordered pairs x,y in R, x is equal to y which is an equivalent statement to saying that for every symmetric ordered pair, in that x,y is in R and y,x is in R, it is implied that x is equal to y. Hence antisymmetry.Therefore we have prove that there can exist a partial order and equivalence relation for a relation with a cardinality greater than or equal to one, thus we have proved the negation of the claim without contradiction, thus the claim is disproved. 
+
+
+\newpage
+6. \newlline R is a subset of the Cartesian product of the set of all integers and itself. Let Z be the set of all integers. R is defined by: 
+
+\begin{equation}
+    R = \{\lange x, y\rangle  \in Z^2\ \mid x^2 \geq y^2 \} 
+\end{equation}
+To disprove that R is an equivalence relation, we can find a counter example which proves that R is not an equivalence relation. For example, if x = 4, and y =2, then the relation holds because 16 >2, thus $\langle$ 4,2$\rangle$ $\in$ R. To be equivalence, a relation must be symmetric, thus $\langle$ 2,4$\rangle$ would have to be an element of R. However, 4 $\geq$ 16 is a false statement so the relation does not contain that ordered pair, hence R is not equivalence.
+
+\newline 
+In order to disprove that R is a partial order we can also find a counter example which shows that R is not a partial order. In order to be a partial order, a relation has to be transitive, reflexive and antisymmetric. The definition of antisymmetric is as follows: 
+\begin{equation}
+    \forall \langle x,y\rangle \in A^2, \langle x,y\rangle \in R \wedge \langle y,x\rangle \in R \implies x=y 
+\end{equation}
+If we let x = 3, and y= -3, then the relation property holds, as:  3$^2$ $\geq$ (-3)$^2$. Conversely, if we let x = -3, and y=3. then the relation property also holds as (-3)$^2$ $\geq$ 3$^2$. This means that both of the ordered pairs, $\langle$ 3,-3$\rangle$, and $\langle$ 3,-3$\rangle$ are elements of R. However if we look at the definition of antisymmetric, x must be equal to y, and in this situation, 3 $\neq$ -3, Thus because there exists an ordered pair where the relation property is satisfied and the antisymmetric property is not, the relation is not a partial order.
+\newline
+
+\newpage
+
+7. The definition of euclidean is given by: 
+
+\begin{equation}
+    \forall \langle x,y,z\rangle \in A^3, \langle x,y \rangle \in R \wedge \langle x, z\rangle \in R \implies \langle y,z\rangle \in R
+\end{equation}
+We are to prove that if R is symmetric, then R is only transitive if and only if it is euclidean. A transitive relation is given by: 
+
+
+\begin{equation}
+    \forall \langle x,y,z\rangle \in A^3, \langle x, y\rangle \in R \wedge \langle y, z\rangle \in R \implies \langle x,z\rangle \in R 
+\end{equation}
+The definition of symmetric is:
+
+\begin{equation}
+    \forall \langle x, y \rangle \in A^2  \mid \langle x, y \rangle \in R \implies \langle y, x  \rangle \in R
+\end{equation}
+Therefore the relation is only transitive if the relation is both symmetric and euclidean, given that the relation must be symmetric. We can use the definitions of all these terms to prove this claim. We know that for every ordered pair in R, there must be the symmetric ordered pair present in R if the relation is said to be symmetric. Via the definition of euclidean, if there is an ordered pair x,y in R and an ordered pair x,z in R and y,z in R then there must exist the ordered pairs y,x and z,x, z,y in R also. Part of this can be rewritten to show how symmetry and euclidean imply transitivity. 
+\begin{equation}
+    \forall \langle x,y,z\rangle \in R, \;\; \langle x,z\rangle \in R \wedge \langle z,y\rangle \in R \wedge \langle x,y \rangle \in R 
+\end{equation}
+\begin{equation}
+        \forall \langle x,y,z\rangle \in R, \;\; \langle x,z\rangle \in R \wedge \langle z,y\rangle \in R \implies \langle x,y \rangle \in R 
+\end{equation}
+
+From the definition of euclidean, we know that x, y and z are three arbitrary elements of A. Hence it is possible to rewrite the equation above letting x, z and y in the above equation as x,y and z in the definition of transitivity. This results in the definition of transitivity, which was arrived at from the implied ordered pairs that must be present in a set which is symmetrical and euclidean. Hence we have proven that for any symmetrical relation, the relation be euclidean implies that the relation is also transitive. However as the claim is a two way implication, we must prove the reverse of the claim. 
+\newline If a relation that is  is symmetrical we must prove that the relation being transitive implies that the relation is euclidean. We can do this via the same method and plugging in the definitions of symmetry, transitivity and euclidean. If a relation is symmetric an transitive, then the relation must contain the order pairs: x,y, y,z, x,z, y,x, z,y and z,x. From this we can rewrite this to show how a relation being symmetric and transitive implies that it is also euclidean:
+\begin{equation}
+    \forAll \langle x,y,z\rangle \in A^3, \; \; \langle y,z\rangle \in R \; \wedge \; \langle y,x\rangle \in R  \; \wedge \; \langle z,x\rangle \in R 
+\end{equation}
+\begin{equation}
+    \forAll \langle x,y,z\rangle \in A^3, \; \; \langle y,z\rangle \in R \; \wedge \; \langle y,x\rangle \in R \implies  \langle z,x\rangle \in R 
+\end{equation}
+Again, as the definition of euclidean contains arbitrary variables x,y and z, we can rename from the above equation to more easily show transitivity. If we let y, z, and x from the above equation equal x, y, and z from the definition of transitivity respectively. We are given the backwards implication of the initial claim such that if a relation is symmetrical and transitive, it is implied that it is also euclidean. Hence the claim forward and reverse claims are proven.
+\end{enumerate}
+\end{document}
+\grid
+\grid
+
+    % \cup \mbox{\Large$\chi$} = \{ \forall X \in \mbox{\Large$\chi$}, x \in \mbox{\Large$\chi$} \} 
+    % \iff \{x \in X_{1} \bigwedge x \in X_{2} \bigwedge ......... \bigwedge x \in X_{n} \}
+    
