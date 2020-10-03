@@ -1,0 +1,281 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{lmodern}
+
+
+\newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
+
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+\begin{document}
+% ========== Edit your name here
+\author{Stefan Verciilo, 20785644}
+\title {ECE 208: Assignment 1: Due by 11:59pm, Oct 2}
+\maketitle
+
+\medskip
+
+% ========== Begin answering questions here
+
+\begin{enumerate}
+
+
+\newline 
+
+1.1 
+\newline
+A proof system P given any F in normal conjunctive form, produces a proof of F. That is to say, P asserts that F is theorem and hence valid for any F.  
+
+\newline
+\newline
+Soundness: P is sound for logic L if whenever P returns theorem for any L-formula F, then F is indeed valid
+\newline
+\newline
+
+Completeness: P is complete for logic L if for any valid L-formula F, P returns theorem.
+
+\newline
+\newline
+
+For all formulas of F, P will prove the formula and return theorem. Therefore, for all valid F, P returns theorem and hence P is a complete proof system. However, P returns theorem for any F valid or invalid. This means that when P returns theorem, it is not implied that F is valid, because P returns theorem for all F valid or invalid. Hence the system is complete but not valid.
+\newline
+\newline
+ 
+
+\newline
+\newline
+1.2 
+\newline 
+Canonical form in Boolean Algebra is a method of representing a Boolean formula. There is disjunctive canonical form and conjunctive canonical form, also known as minterm and maxterm respectively. This Boolean function then will be either only the sum of products (disjunctive), or only the product of sums (conjunctive). The symbol $\lor$ is the 'or' operator and the $\land$ represents 'and'. 
+For example, given the propositional variables $P_{ij}$, $Q_{ij}$, the product of sums is as follows: 
+\begin{equation}
+    (P_{1,1} \land P_{1,2} \land .... \land P_{1{n_1}}) \lor     (P_{2,1} \land P_{2,2} \land .... \land P_{n{n_2}}) \lor ..... 
+    \lor     (P_{n,1} \land P_{n,2} \land .... \land P_{m{n_m}})
+\end{equation}
+
+The sum of products is viewed as: 
+\begin{equation}
+    (Q_{1,1} \lor Q_{1,2} \lor .... \lor Q_{1{n_1}}) \land     (Q_{2,1} \lor Q_{2,2} \lor .... \lor Q_{n{n_2}}) \land ..... 
+    \lor     (Q_{n,1} \land Q_{n,2} \land .... \land Q_{m{n_m}})
+\end{equation}
+
+
+This form of writing Boolean formulas is prevalent in the field of computer engineering especially where Boolean formulas derived from logical gates is simplified into a standard form (SOP or POS).
+
+Ex.
+\includegraphics{Capture.PNG}
+
+The function F for the above inputs X1, X2, and X3 simplifies to the following canonical expression of the min terms in a sum of products: 
+\newline
+
+\begin{equation}
+    F = m_1 + m_2 + m_3 + m_5
+\end{equation}
+
+\begin{equation}
+    F = \bar{X1} \cdot \bar{X2} \cdot X3   +
+    \bar{X1} \cdot X2 \cdot \bar{X3}   +
+    X1 \cdot \bar{X2} \cdot X3   
+\end{equation}
+
+
+
+
+
+
+\newline
+\newline
+\newline
+\newline
+
+1.3
+\newline
+The model-theoretic approach establishing the validity of Boolean formulas, as stated in the question, requires the explicit systematic checking over every possible assignment. The issue of such a model applied to logics or fragments of mathematics over infinite domains is that it becomes in possible to prove the validity of any formula. As stated in the example, the natural numbers is an infinite range. Checking the validity of linear arithmetic over every single possible natural number is required for a valid formula, and hence impossible to prove.
+
+
+\newline
+\newline
+\newline
+\newline
+1.4
+\newline
+
+To prove that the following function is valid, we will assume it is invalid and attempt arrive at a contradiction:
+\begin{equation}
+((p \rightarrow q) \land (q \leftrightarrow  r)) \rightarrow (p  \rightarrow r)
+\end{equation}
+
+\begin{equation}
+ I \nvDash ((p \rightarrow q) \land (q \leftrightarrow  r)) \rightarrow (p  \rightarrow r)
+\end{equation}
+\begin{equation}
+ I \vDash (p \rightarrow q) \land (q \leftrightarrow  r)
+\end{equation}
+\begin{equation}
+ I \nvDash p \rightarrow r
+\end{equation}
+\begin{equation}
+  I \vDash p 
+\end{equation}
+\begin{equation}
+  I \nvDash \neg r
+\end{equation}
+\begin{equation}
+  I \vDash p \rightarrow  q
+\end{equation}
+\begin{equation}
+  I \vDash \neg p \lor q
+\end{equation}
+
+From equations 9 and 11, p cannot be false $\rightarrow$ q is true
+\begin{equation}
+  I \vDash q
+\end{equation}
+\begin{equation}
+  I \vDash q \leftrightarrow r 
+\end{equation}
+
+\begin{equation}
+  I \vDash \neg q
+\end{equation}
+
+\begin{equation}
+  I \vDash  q \land \neg q 
+\end{equation}
+
+\begin{equation}
+  I \vDash \bot 
+\end{equation}
+
+
+\newpage
+1.5 
+\newline 
+% Soundness: P is sound for logic L if whenever P returns theorem for any L-formula F, then F is indeed valid
+% Completeness: P is complete for logic L if for any valid L-formula F, P returns theorem.
+
+From the definitions of soundness and completeness stated in Q 1.1, if P is complete for logic for a valid formula, P returns theorem, then F is indeed and P is sound for logic L if whenever P returns theorem for any L-formula F, . If we consider the case  where F is valid where G = $\neg$ F, then the proof system is not sound, as a case exists where P is complete for a valid formula but P doesn't return theorem because P interprets G as F, not as $\neg$F. There also exists the case where G is valid and hence \neg F is not valid. The proof system will return true for an invalid F, disproving soundness.
+\newpage 
+\newline
+2.1 
+\newline
+We can modify the structural inductive definition of the syntax of Boolean formulas to allow for balanced parenthesis by accounting for the arbitrary case of different formulae, connected by the arbitrary logical connectives. For the arbitrary formulae F$_i$,  the following is true for the arbitrary logical connective '$\circ$': 
+
+\begin{equation}
+    (F_i) \circ (F_j) \leftrightarrow F_i \circ F_j
+\end{equation}
+\newline 
+\newline
+2.2.
+\newline
+Boolean formulas can be represented as directed acyclic graph by having propositional variables as leaves of the graph and all other nodes as logical connectives. The recursive function can be seen below:
+
+\includegraphics{twotwo.PNG}
+\newpage 
+3. 
+\newline 
+% The pseudo code for question three can be found below:
+\includegraphics{three.PNG}
+\includegraphics{three2.PNG}
+\includegraphics{three3.PNG}
+
+\newpage
+
+In the pseudo code above, if we assume that a DAG Node class is already provided for us the above will work. This is created assuming that the fill connections function is called prior to any traversal. What this function does is fill a map containing all of the possible mappings for the following operations: implications, iff, AND, and ORs. Also it is assumed that there is only forward implications in this graph. An post-order traversal is then completed on the graph. This is because we know only the value of the nodes of the propositional variables at first. Traversing up, we return the last evaluated node which is the root of the original tree, and will return true or false.
+
+\newpage
+4.
+\newline
+The algorithm for this question has been computed below:
+
+\includegraphics{four1.PNG}
+\includegraphics{four4.PNG} 
+\newline 
+
+My algorithm is equivalence preserving because of the way it is constructed. This algorithm is constructed using a pre-order traversal, and if there is a negation required, this functionality is passed on to the next recursion. All of the implications are changed to an equivalent statement using the following:
+
+\includegraphics{four3.PNG}
+\includegraphics{fou4.PNG} 
+
+If we arrive at a leaf in my algorithm and a negation is required, then a new $\neg$ node is created. V.v. if there was previously one and we negate that, then the double negation leaves us with the original propositional variable. Likewise as seen above all of the situations are accounted for making the algorithm equivalence preserving.
+\newpage
+5.
+\newline
+The definition notion equisatisfiable means that for two logical formulae, if the first is satisfiable, then the second is. Additionally, if the second formula is satisfiable, then the first is.
+A formula F is satisfiable iff there exists an interpretation I, such that I $\vDash$ F. 
+\newline 
+\newline 
+For each subformula of some formula F, we can introduce new variables, that is for every subformula G of F, we could introduce a new variable $p_{Gi}$ where $p_{Gi}$ represents an arbitrary subformula G of F. Consider the arbitrary boolean connective `$\circ$`.  Then we could rewrite the arbitrary subformula 
+
+\begin{equation}
+    G : G_i \circ G_j  
+    % F = G_0 \circ G_1 \circ ... \circ  G_i \circ ... \circ G_n 
+\end{equation}
+
+and let $G_0$ $\leftrightarrow$ F, where $G_0$ is the largest subformula
+
+The representation of this given the notation above is given as: 
+
+\begin{equation}
+    p_{G_{ij}} \leftrightarrow p_{G_{i}} \circ p_{G_{j}}
+    % F = G_0 \circ G_1 \circ ... \circ  G_i \circ ... \circ G_n 
+\end{equation}
+
+We know that arbitary $p_{G_{ij}}$ can be rewritten to an equivalent CNF by converting $p_{G_{ij}}$  to NNF and distributing the conjunctions over the disjunctions. Let the function P(x) represent the conversion of x into CNF format. Thus the output of the Tseitin Transformation $F'$: 
+\begin{equation}
+F' = p_F \land \bigwedge\limits_{(G_{ij}= (G_i \circ G_j)) S_F \in} P(p_{ij})
+\end{equation}
+
+Suppose that F equals the propositional variable q i.e. F: q. Then obviously F is equisatisfiable with F$'$ because F $\leftrightarrow$ F$'$. 
+\newline
+\newline
+Now suppose that:
+\begin{gather}
+    F: q_1 \circ q_2
+\end{gather}
+We also know that F is obviously equisatisfiable because the set $S_F$ is of cardinality 0 again, the only subformula is $q_1 \circ q2$ which $\leftrightarrow$
+\newline 
+Now let's do the same where we let $Q_{12} : q_1 \circ q_2$, and $Q_{34} : q_3 \circ q_4$
+
+
+\begin{gather}
+    F: Q_1 \circ Q_2
+\end{gather}
+
+Well we know that F : $Q_1$ and F : $Q_2$ are both equisatisfiable fomrulae. So we are left with an F$'$:
+
+\begin{equation}
+    F': p_F \land P(Q_1) \land P(Q_2)
+\end{equation}
+
+Because F is equisatisfiable with $Q_1$ and $Q_2$ then we know that F is equisatisfiable with P($Q_1$) and P($Q_2$) because P(x) is the CNF of x. Equisatisfiablilty is preserved through conjunction, therefore F is equisatisfiable with F$'$ as F is equisatisfiable with each equisatisfiable with each variable in the above equation. 
+\newline 
+We can expand this to encompass n variables because of conjunction rules, so :
+\begin{equation}
+    F: Q_1 \circ Q_2 \circ  .... \circ Q_n  
+\end{equation}
+F is equisatisfiable. The above definition of F includes every possible definition of F therefore for any F, F and F$'$ are equisatisfiable.
+
+\newline 
+\newline 
+The Tseitin transformation is a polynomial time algorithm because the output F$'$ is expanded polynomially. This is true because each $Q_i$ is bound to a polynomial expansion of the propositional variables, so the Tseitin transformation must then be a polynomial time algorithm.
+
+
+% where 'n' is the number of sub subformlae in F.
+
+The Tseitin Transformation will give us an equisatisfiable CNF.
+
+
+\end{enumerate}
+\end{document}
+\grid
+\grid
+
+    % \cup \mbox{\Large$\chi$} = \{ \forall X \in \mbox{\Large$\chi$}, x \in \mbox{\Large$\chi$} \} 
+    % \iff \{x \in X_{1} \bigwedge x \in X_{2} \bigwedge ......... \bigwedge x \in X_{n} \}
